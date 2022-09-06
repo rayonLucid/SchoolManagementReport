@@ -1,0 +1,29 @@
+﻿body {
+}
+input[type=text], input[type=password] ,select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.Submitbutton {
+	background-color: #B2E4FA;
+	color: black;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+.Printbutton {
+	background-color: #B2E4FA;
+	color: black;
+	padding: 5px 5px;
+	cursor: pointer;
+	width: 10%;
+}
+img{
+border:solid black 2px !important;
+}

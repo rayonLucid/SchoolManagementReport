@@ -1,0 +1,286 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SchoolManagementReport.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> </title>
+
+  <%--  <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>--%>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/css/select2.css" rel="stylesheet" />
+    <link href="Scripts/jquery-ui-1.13.2.custom/jquery-ui.theme.min.css" rel="stylesheet" />
+    <style>
+         .container_wrapper{
+                display:flex;
+                place-content:center;
+                column-gap:12px;
+              position:relative;
+              bottom:0px;
+            }
+           /* .container_wrapper {
+   
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0 30px;
+}*/
+         .SideMenu{
+             display:flex;
+             flex-direction:column;
+             padding:2em 2em;
+             background-color:#042954;
+             width:20%;
+           height: 100vh
+            
+         }
+         .MenuItemList{
+             display:flex;
+             justify-content:space-around;
+             flex-wrap:wrap;
+             gap:12px;
+         }
+          .ItemListHeader {
+              display:flex;
+               justify-content:center;
+              position:relative;
+              height:10mm;
+                border-bottom: 2px solid #021933;
+                width:100%;
+          }
+         .ItemListHeader label {
+             border:0;
+          line-height:1cm;
+         }
+          .ItemSubList{
+             display:none;
+             justify-content:space-around;
+             flex-direction:column;
+             background-color:#02152b;
+             padding:0em;
+             position:relative;
+             width:100%;
+             border-radius:5px;
+              opacity: 1;
+            animation: fade 2s forwards;
+         }
+
+          @keyframes fade {
+  0% { opacity: 0 }
+  50% { opacity: 0.5 }
+  100% { opacity: 1 }
+}
+          .MenuItemList label {
+              color:white;
+          
+             
+          }
+          .ItemSubList label{
+                 padding:1em;
+               border-bottom:yellow 0.5px solid;
+                 text-align:center;
+          }
+          .ItemSubList label:hover{
+              background-color:#042954;
+              
+          }
+         /* .MenuItemList:is(:hover) .ItemSubList{
+              display:flex;
+          }*/
+    </style>
+    <asp:ContentPlaceHolder ID="HeaderContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server" id="MainForm">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+             <%--  <asp:ScriptReference Name="MsAjaxBundle" />--%>
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                
+                 <asp:ScriptReference  Path="~/Scripts/jquery-ui-1.13.2.custom/jquery-ui.min.js" />
+                 <asp:ScriptReference  Path="~/Scripts/select2.min.js" />
+                  <asp:ScriptReference  Path="~/Scripts/General.js" />
+                  
+                   <asp:ScriptReference  Path="~/Scripts/js/jquery.dataTables.min.js" />
+                
+             <%--  <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+             --%>  
+           <%--  <asp:ScriptReference Name="WebFormsBundle" />--%>
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header" style="display:none;">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">Deradevalue</a>
+                </div>
+                <div class="navbar-collapse collapse" style="display:none;">
+                    <ul class="nav navbar-nav">
+                        <li style="display:none;"><a runat="server" href="~/">Home</a></li>
+                        <li style="display:none;"><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="Default.aspx">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <main class="container_wrapper">
+        <aside class="SideMenu">
+         <div class="MenuItemList">
+               <div class="ItemListHeader" > 
+                      <label><a href="DashBoard.aspx">Dashboard</a></label>
+               </div>
+
+                
+            </div>
+            <div class="MenuItemList">
+               <div class="ItemListHeader" > 
+                      <label>Students</label>
+               </div>
+
+                <div class="ItemSubList">
+                 <% if (Admin==true) { %>  
+                 <label><a href="StudentAdmissionForm.aspx">Admission Form</a></label>
+                     <label><a href="Students.aspx">All Students</a></label>
+                     <label>Student Promotion</label> <%} %>
+                   <% if (Teacher==true) { %> 
+                    
+                   <label>My Students</label>
+                   <%} %>
+                    
+                </div>
+            </div>
+             <% if (Admin==true) { %>  
+            <div class="MenuItemList">
+               <div class="ItemListHeader"> 
+                      <label>Teachers</label>
+               </div>
+             
+
+                <div class="ItemSubList">
+                     <label><a href="TeachersInformation.aspx">All Teachers</a></label>
+                   
+                   
+                </div>
+            </div>
+
+            <div class="MenuItemList">
+               <div class="ItemListHeader"> 
+                      <label>Parent</label>
+               </div>
+             
+
+                <div class="ItemSubList">
+                     <label><a href="ParentsInformation.aspx">All Parent</a></label>
+                   
+                </div>
+            </div>
+             <div class="MenuItemList">
+               <div class="ItemListHeader"> 
+                      <label>Class</label>
+               </div>
+             
+
+                <div class="ItemSubList">
+                     <label><a href="ClassInformation.aspx">All Classes</a></label>
+                    
+                   
+                </div>
+  
+               
+            </div>
+            <div class="MenuItemList">
+               <div class="ItemListHeader"> 
+                      <label><a href="Notifications.aspx">Create Notifications</a> </label>
+               </div>
+             
+
+               
+            </div>
+           
+           
+              <div class="MenuItemList">
+               <div class="ItemListHeader"> 
+                      <label><a href="Subjects.aspx">Subjects</a></label>
+                   <a></a>
+               </div>
+                </div>
+      
+        <%} %>
+             <div class="MenuItemList">
+               <div class="ItemListHeader"> 
+                      <label>Accademics</label>
+               </div>
+             
+
+                <div class="ItemSubList">
+                 <label ><a class="btn" href="Sessions.aspx" style="color:#fff">Session</a></label>
+                 <label>Term</label>
+                 <label><a>Grades</a></label>
+                    
+                   
+                </div>
+            </div>
+             <% if (Teacher==true) { %>  
+             <div class="MenuItemList">
+               <div class="ItemListHeader"> 
+                      <label>Exam</label>
+               </div>
+             
+
+                <div class="ItemSubList">
+                     <label><a>All Books</a></label>
+                     <label>Add Books</label>
+                   
+                </div>
+            </div>
+              <%} %>
+        </aside>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer id="PageFooter">
+                <p>&copy; <%: DateTime.Now.Year %> Rayon Solutions</p>
+            </footer>
+        </div>
+</main>
+    </form>
+</body>
+
+<%--<script src="Scripts/jquery-3.4.1.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>--%>
+<%--<script src="Scripts/jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>--%>
+
+  <%--  <script src="Scripts/General.js"></script>--%>
+</html>

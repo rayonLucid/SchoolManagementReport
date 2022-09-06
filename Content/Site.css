@@ -1,0 +1,158 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    overflow:hidden;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 100vh;
+  overflow: auto;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.dashboardSummary {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display:flex;
+  gap:20px;
+  padding:4em 2em;
+  border-radius:10px;
+  width:25%;
+
+}
+#Summary{
+padding:2em 2em;
+}
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .jumbotron {
+        margin-top: 20px;
+    }
+
+    .body-content {
+        padding: 0;
+    }
+}
+
+.InfoValue {
+  text-align: right;
+  width: 100%;
+}
+
+.KidsInfo {
+  display: flex;
+  padding: 1em 1em;
+  flex-direction: row;
+  gap: 12px;
+  align-items: flex-start
+}
+
+#NotificationInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  border-bottom: solid 0.5px black;
+}
+
+.NoficationDate {
+  background-color: wheat;
+  border-radius: 20px;
+  padding: 6px;
+}
+
+.NoficationDetail {
+  font-size: large;
+  font-weight: 400;
+  font-display: auto;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+}
+
+.FileButtons {
+  border: 0;
+}
+
+  .FileButtons::-webkit-file-upload-button {
+    display: none;
+  }
+
+#ImportTeachers::before {
+  content: "Import Teachers";
+  display: inline-block;
+  background: wheat;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 500;
+  font-size: 10pt;
+  color: #000;
+}
+
+#ImportResults::before {
+  content: "Import Results";
+  display: inline-block;
+  background: wheat;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 500;
+  font-size: 10pt;
+  color: #000;
+}
+
+#ImportStudents::before {
+  content: "Import Students";
+  display: inline-block;
+  background: wheat;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 500;
+  font-size: 10pt;
+  color: #000;
+}
+
+#ImportSubjects::before {
+  content: "Import Subjects";
+  display: inline-block;
+  background: linear-gradient(top, #2e8afa, #2e8afa);
+  border: 1px solid #999;
+  background-color: #2e8afa;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #000;
+  font-weight: 500;
+  font-size: 10pt;
+  color: #f9f9f9;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
